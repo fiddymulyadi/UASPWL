@@ -4,6 +4,16 @@ include 'include/koneksi.php';
 
 $message = '';
 
+$result = $koneksi->query("SELECT logo FROM school_profile WHERE id=1");
+$logo = 'default_logo.png'; // logo default
+if ($result && $result->num_rows > 0) {
+    $data = $result->fetch_assoc();
+    if (!empty($data['logo'])) {
+        $logo = 'admin/uploads/' . $data['logo'];
+    }
+}
+
+
 if (isset($_POST['login'])) {
     $username = $koneksi->real_escape_string($_POST['username']);
     $password = $_POST['password'];
@@ -73,9 +83,9 @@ if (isset($_POST['login'])) {
                 <div class="login-wrap">
                     <div class="login-content">
                         <div class="login-logo">
-                            <a href="#">
-                                <img src="admin/assets/images/icon/logo.png" alt="CoolAdmin" />
-                            </a>
+                            <a class="logo" href="/">
+                             <img src="<?php echo htmlspecialchars($logo); ?>" alt="Logo Sekolah" style="max-height: 100px;">
+                        </a>
                         </div>
                         <div class="login-form">
 
