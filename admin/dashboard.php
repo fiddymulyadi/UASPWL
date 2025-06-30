@@ -161,7 +161,7 @@ $koneksi->close();
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-            <a href="#">
+            <a href="dashboard.php">
                 <?php if (!empty($data['logo']) && file_exists('uploads/' . $data['logo'])): ?>
                     <img src="uploads/<?php echo htmlspecialchars($data['logo']); ?>" alt="Logo Sekolah" style="max-height: 100px;" />
                 <?php else: ?>
@@ -169,29 +169,34 @@ $koneksi->close();
                 <?php endif; ?>
             </a>
             </div>
-
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
-                            <a class="js-arrow" href="#">
+                        <li  class="active has-sub">
+                            <a class="js-arrow" href="dashboard.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-gears"></i>Pengaturan<i class="fas fa-angle-down float-right"></i></a>
+                                 <i class="fas fa-gears"></i>Pengaturan<i class="fas fa-angle-down float-right"></i></a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
                                     <a href="profilsekolah.php">Profil Madrasah</a>
                                 </li>
                                 <li>
-                                    <a href="index2.html">Dashboard 2</a>
+                                    <a href="profilkepala.php">Profil Kepala</a>
                                 </li>
                                 <li>
-                                    <a href="index3.html">Dashboard 3</a>
+                                    <a href="visidanmisi.php">Visi dan Misi</a>
                                 </li>
                                 <li>
-                                    <a href="index4.html">Dashboard 4</a>
+                                    <a href="kontak.php">Kontak</a>
+                                </li>
+                                <li>
+                                    <a href="sosmed.php">Sosial Media</a>
+                                </li>
+                                <li>
+                                    <a href="slider.php">Slider</a>
                                 </li>
                             </ul>
                         </li>

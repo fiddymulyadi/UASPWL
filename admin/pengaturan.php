@@ -159,7 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-            <a href="#">
+            <a href="dashboard.php">
                 <?php if (!empty($data['logo']) && file_exists('uploads/' . $data['logo'])): ?>
                     <img src="uploads/<?php echo htmlspecialchars($data['logo']); ?>" alt="Logo Sekolah" style="max-height: 100px;" />
                 <?php else: ?>
