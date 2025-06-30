@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Handle upload logo
     if (isset($_FILES['logo']) && $_FILES['logo']['error'] == 0) {
-        $target_dir = "uploads/";
+        $target_dir = "admin/uploads/";
         if (!is_dir($target_dir)) {
             mkdir($target_dir, 0755, true);
         }
@@ -174,21 +174,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <a class="js-arrow" href="dashboard.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <li class="active has-sub">
+                        <li>
                             <a class="js-arrow" href="#">
                                  <i class="fas fa-gears"></i>Pengaturan<i class="fas fa-angle-down float-right"></i></a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="profil.php">Profil</a>
+                                <li class="active has-sub">
+                                    <a href="profilsekolah.php">Profil Madrasah</a>
                                 </li>
                                 <li>
-                                    <a href="index2.html">Dashboard 2</a>
+                                    <a href="profilkepala.php">Profil Kepala</a>
                                 </li>
                                 <li>
-                                    <a href="index3.html">Dashboard 3</a>
+                                    <a href="visidanmisi.php">Visi dan Misi</a>
                                 </li>
                                 <li>
-                                    <a href="index4.html">Dashboard 4</a>
+                                    <a href="kontak.php">Kontak</a>
+                                </li>
+                                <li>
+                                    <a href="sosmed.php">Sosial Media</a>
+                                </li>
+                                <li>
+                                    <a href="slider.php">Slider</a>
                                 </li>
                             </ul>
                         </li>

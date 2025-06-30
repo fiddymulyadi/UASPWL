@@ -178,9 +178,22 @@ $koneksi->close();
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="pengaturan.php">
-                                <i class="fas fa-cog"></i>Pengaturan
-                            </a>
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-gears"></i>Pengaturan<i class="fas fa-angle-down float-right"></i></a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="profilsekolah.php">Profil Madrasah</a>
+                                </li>
+                                <li>
+                                    <a href="index2.html">Dashboard 2</a>
+                                </li>
+                                <li>
+                                    <a href="index3.html">Dashboard 3</a>
+                                </li>
+                                <li>
+                                    <a href="index4.html">Dashboard 4</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>

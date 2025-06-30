@@ -17,19 +17,13 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
 
 // Default data supaya tidak undefined index
 $defaultData = [
-    'school_name' => '',
-    'npsn' => '',
-    'address' => '',
-    'sejarah' => '',
-    'akreditasi' => '',
-    'nsm' => '',
-    'status_sekolah' => 'Negeri',
-    'jenjang' => '',
-    'logo' => ''
+    'nama' => '',
+    'sambutan' => '',
+    'foto' => ''
 ];
 
 // Ambil data dari database
-$sql = "SELECT * FROM school_profile LIMIT 1";
+$sql = "SELECT * FROM kepala_sekolah LIMIT 1";
 $result = $koneksi->query($sql);
 if ($result && $result->num_rows > 0) {
     $data = $result->fetch_assoc();
@@ -42,51 +36,39 @@ if ($result && $result->num_rows > 0) {
 $message = "";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Escape input
-    $school_name = $koneksi->real_escape_string($_POST['school_name'] ?? '');
-    $npsn = $koneksi->real_escape_string($_POST['npsn'] ?? '');
-    $address = $koneksi->real_escape_string($_POST['address'] ?? '');
-    $sejarah = $koneksi->real_escape_string($_POST['sejarah'] ?? '');
-    $akreditasi = $koneksi->real_escape_string($_POST['akreditasi'] ?? '');
-    $nsm = $koneksi->real_escape_string($_POST['nsm'] ?? '');
-    $status_sekolah = $koneksi->real_escape_string($_POST['status_sekolah'] ?? 'Negeri');
-    $jenjang = $koneksi->real_escape_string($_POST['jenjang'] ?? '');
-    $logo = $data['logo']; // keep old logo by default
+    $nama = $koneksi->real_escape_string($_POST['nama'] ?? '');
+    $sambutan = $koneksi->real_escape_string($_POST['sambutan'] ?? '');
+    $foto = $data['foto']; // keep old logo by default
 
-    // Handle upload logo
-    if (isset($_FILES['logo']) && $_FILES['logo']['error'] == 0) {
+    // Handle upload Foto
+    if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
         $target_dir = "uploads/";
         if (!is_dir($target_dir)) {
             mkdir($target_dir, 0755, true);
         }
-        $logo_name = time() . "_" . basename($_FILES['logo']['name']);
-        $target_file = $target_dir . $logo_name;
+        $foto_name = time() . "_" . basename($_FILES['foto']['name']);
+        $target_file = $target_dir . $foto_name;
 
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         $allowed_types = ['jpg', 'jpeg', 'png', 'gif'];
 
         if (in_array($imageFileType, $allowed_types)) {
-            if (move_uploaded_file($_FILES["logo"]["tmp_name"], $target_file)) {
+            if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
                 // Hapus file logo lama jika ada dan berbeda
-                if (!empty($data['logo']) && file_exists($target_dir . $data['logo'])) {
-                    unlink($target_dir . $data['logo']);
+                if (!empty($data['foto']) && file_exists($target_dir . $data['foto'])) {
+                    unlink($target_dir . $data['foto']);
                 }
-                $logo = $logo_name;
+                $foto = $foto_name;
             }
         }
     }
 
     if ($result && $result->num_rows > 0) {
         // Update existing record
-        $update_sql = "UPDATE school_profile SET 
-            school_name='$school_name',
-            npsn='$npsn',
-            address='$address',
-            sejarah='$sejarah',
-            akreditasi='$akreditasi',
-            nsm='$nsm',
-            status_sekolah='$status_sekolah',
-            jenjang='$jenjang',
-            logo='$logo'
+        $update_sql = "UPDATE kepala_sekolah SET 
+            nama='$nama',
+            sambutan='$sambutan',
+            foto='$foto'
             WHERE id=1";
         if ($koneksi->query($update_sql) === TRUE) {
             $message = "Data berhasil diperbarui.";
@@ -95,9 +77,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     } else {
         // Insert new record
-        $insert_sql = "INSERT INTO school_profile 
-            (school_name, npsn, address, sejarah, akreditasi, nsm, status_sekolah, jenjang, logo) VALUES 
-            ('$school_name', '$npsn', '$address', '$sejarah', '$akreditasi', '$nsm', '$status_sekolah', '$jenjang', '$logo')";
+        $insert_sql = "INSERT INTO kepala_sekolah
+            (nama, sambutan, foto) VALUES 
+            ('$nama', '$sambutan', '$foto')";
         if ($koneksi->query($insert_sql) === TRUE) {
             $message = "Data berhasil disimpan.";
         } else {
@@ -112,13 +94,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $data = array_merge($defaultData, $data);
     }
 }
+
+$profil = $koneksi->query("SELECT * FROM school_profile WHERE id=1")->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Pengaturan Profil Sekolah | CoolAdmin</title>
+    <title>Pengaturan Kepala Madrasah</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     
     <!-- Fontfaces CSS-->
@@ -151,6 +135,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             max-height: 120px;
             margin-bottom: 10px;
         }
+
+        .foto-preview {
+            max-height: 120px;
+            margin-bottom: 10px;
+        }
     </style>
 
 </head>
@@ -160,10 +149,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
             <a href="#">
-                <?php if (!empty($data['logo']) && file_exists('uploads/' . $data['logo'])): ?>
-                    <img src="uploads/<?php echo htmlspecialchars($data['logo']); ?>" alt="Logo Sekolah" style="max-height: 100px;" />
+                <?php if (!empty($profil['logo']) && file_exists('uploads/' . $profil['logo'])): ?>
+                    <img src="uploads/<?php echo htmlspecialchars($profil['logo']); ?>" alt="Logo Sekolah" style="max-height: 100px;" />
                 <?php else: ?>
-                    <img src="assets/images/icon/logo-default.png" alt="Logo Default" style="max-height: 100px;" />
+                    <img src="assets/images/icon/logo.png" alt="Logo Default" style="max-height: 100px;" />
                 <?php endif; ?>
             </a>
             </div>
@@ -174,21 +163,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <a class="js-arrow" href="dashboard.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <li class="active has-sub">
+                        <li>
                             <a class="js-arrow" href="#">
                                  <i class="fas fa-gears"></i>Pengaturan<i class="fas fa-angle-down float-right"></i></a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="profil.php">Profil</a>
+                                    <a href="profilsekolah.php">Profil Madrasah</a>
+                                </li>
+                                <li class="active has-sub">
+                                    <a href="profilkepala.php">Profil Kepala</a>
                                 </li>
                                 <li>
-                                    <a href="index2.html">Dashboard 2</a>
+                                    <a href="visidanmisi.php">Visi dan Misi</a>
                                 </li>
                                 <li>
-                                    <a href="index3.html">Dashboard 3</a>
+                                    <a href="kontak.php">Kontak</a>
                                 </li>
                                 <li>
-                                    <a href="index4.html">Dashboard 4</a>
+                                    <a href="sosmed.php">Sosial Media</a>
+                                </li>
+                                <li>
+                                    <a href="slider.php">Slider</a>
                                 </li>
                             </ul>
                         </li>
@@ -212,63 +207,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="section__content section__content--p30">
                       <div class="login-wrap p-4" style="max-width: 1000px; margin: auto; background: #fff; border-radius: 6px;">
                     <div class="container-fluid">
-                        <h2 class="title-1 mb-3">Pengaturan Profil Sekolah</h2>
+                        <h2 class="title-1 mb-3">Pengaturan Kepala Madrasah</h2>
                         <?php if($message): ?>
                           <div class="alert alert-info"><?php echo htmlspecialchars($message); ?></div>
                         <?php endif; ?>
                         <form action="" method="POST" enctype="multipart/form-data">
                             <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="school_name">Nama Sekolah</label>
-                                    <input type="text" class="form-control" id="school_name" name="school_name" value="<?php echo htmlspecialchars($data['school_name']); ?>" required>
+                                <div class="form-group col-md-12">
+                                    <label for="school_name">Nama Kepala</label>
+                                    <input type="text" class="form-control" id="nama" name="nama" value="<?php echo htmlspecialchars($data['nama']); ?>" required>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="npsn">NPSN</label>
-                                    <input type="text" class="form-control" id="npsn" name="npsn" value="<?php echo htmlspecialchars($data['npsn']); ?>" required>
-                                </div>
+                                <div class="form-group col-md-12">
+                                <label for="address">Sambutan</label>
+                                <textarea class="form-control" id="sambutan" name="sambutan" rows="10"><?php echo htmlspecialchars($data['sambutan']); ?></textarea>
                             </div>
-
-                            <div class="form-group">
-                                <label for="address">Alamat</label>
-                                <textarea class="form-control" id="address" name="address" rows="3" required><?php echo htmlspecialchars($data['address']); ?></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="address">Sejarah</label>
-                                <textarea class="form-control" id="sejarah" name="sejarah" rows="10"><?php echo htmlspecialchars($data['sejarah']); ?></textarea>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="jenjang">Jenjang</label>
-                                <input type="text" class="form-control" id="jenjang" name="jenjang" value="<?php echo htmlspecialchars($data['jenjang']); ?>">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="akreditasi">Akreditasi</label>
-                                    <input type="text" class="form-control" id="akreditasi" name="akreditasi" value="<?php echo htmlspecialchars($data['akreditasi']); ?>">
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="nsm">NSM</label>
-                                    <input type="text" class="form-control" id="nsm" name="nsm" value="<?php echo htmlspecialchars($data['nsm']); ?>">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="status_sekolah">Status Sekolah</label>
-                                    <select class="form-control" id="status_sekolah" name="status_sekolah">
-                                        <option value="Negeri" <?php echo ($data['status_sekolah'] == 'Negeri') ? 'selected' : ''; ?>>Negeri</option>
-                                        <option value="Swasta" <?php echo ($data['status_sekolah'] == 'Swasta') ? 'selected' : ''; ?>>Swasta</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="logo">Logo Sekolah</label>
-                                <?php if (!empty($data['logo']) && file_exists('uploads/' . $data['logo'])): ?>
+                                <label for="foto">Foto Profil</label>
+                                <?php if (!empty($data['foto']) && file_exists('uploads/' . $data['foto'])): ?>
                                     <div>
-                                        <img src="uploads/<?php echo htmlspecialchars($data['logo']); ?>" alt="Logo Sekolah" class="logo-preview img-thumbnail" />
+                                        <img src="uploads/<?php echo htmlspecialchars($data['foto']); ?>" alt="Foto Kepala" class="foto-preview img-thumbnail" />
                                     </div>
                                 <?php endif; ?>
-                                <input type="file" class="form-control-file" id="logo" name="logo" accept="image/*">
+                                <input type="file" class="form-control-file" id="foto" name="foto" accept="image/*">
                             </div>
 
                             <button type="submit" class="btn btn-primary">Simpan</button>
