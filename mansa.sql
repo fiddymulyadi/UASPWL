@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2025 at 06:36 AM
+-- Generation Time: Jun 30, 2025 at 08:20 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `mansa`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kepala_sekolah`
+--
+
+CREATE TABLE `kepala_sekolah` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `foto` varchar(255) DEFAULT NULL,
+  `sambutan` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `kepala_sekolah`
+--
+
+INSERT INTO `kepala_sekolah` (`id`, `nama`, `foto`, `sambutan`) VALUES
+(1, 'Drs. H. Razali, M.Pd.', '1751262970_kamad.png', 'Assalamu\'alaikum Warahmatullahi Wabarakatuh\r\nAlhamdulillah, segala puji dan syukur kita panjatkan ke hadirat Allah SWT yang telah melimpahkan nikmat kepada kita semua mulai dari nikmat sehat, iman dan kesempatan untuk dapat mengabdi di bidang pendidikan untuk mencerdaskan anak bangsa. Website ini kami hadirkan dalam rangka untuk menjalin komunikasi dan mengawali kerjasama yang baik antara pihak Madrasah, Peserta didik, Wali murid, Masyarakat dan Pemerintah, dan pada akhirnya komunikasi ini akan sangat berguna bagi semua pihak yang berkepentingan dengan dunia pendidikan. Semoga situs web ini dapat memberikan manfaat bagi siapa saja yang mengunjungi. Terimakasih.\r\nWassalamu\'alaikum Warahmatullahi Wabarakatuh');
 
 -- --------------------------------------------------------
 
@@ -45,7 +65,7 @@ CREATE TABLE `school_profile` (
 --
 
 INSERT INTO `school_profile` (`id`, `school_name`, `npsn`, `address`, `logo`, `sejarah`, `akreditasi`, `nsm`, `status_sekolah`, `jenjang`) VALUES
-(1, 'MAN 1 PONTIANAK', '10816420', 'Jl. H. Haruna Kel. Sungai Jawi Dalam Kec. Pontianak Barat Kota Pontianak Kalimantan Barat', '1750902333_newicon.png', 'MAN 1 Pontianak berdiri pada tahun 1978. Sebelumnya Nama MAN 1 Pontianak adalah SP. IAIN (Sekolah Persiapan IAIN) yang beralamat di Jl. Merdeka Barat no.173. SP IAIN diresmikan menjadi sekolah negeri pada tahun 1965 yang merupakan sekolah turunan dari IAIN Sunan Kalijaga Jogjakarta. Seiring berkembangnya SP IAIN di Indonesia, maka SP. IAIN Pontianak berinduk kepada IAIN Syarif Hidayatullah Pontianak.\r\n\r\nSesuai SK MENAG No. 17 tanggal 16 Maret 1978, terjadi perubahan nama dari SP. IAIN Syarif Hidayatullah menjadi Madrasah Aliyah Negeri 1 Pontianak yang beralamat di Jl. H. Haruna (sebelumya Jl. Apel VIPada tahun 2021, MAN 1 Pontianak mendapatkan bantuan dana hibah dari Kementrian PUPR untuk peremajaan/renovasi bangunan MAN 1 Pontianak yang sudah mulai rusak. Kini MAN 1 Pontianak menjadi salah satu sekolah favorit di Kota Pontianak.', 'A', '131161710001', 'Negeri', 'Madrasah Aliyah');
+(1, 'MAN 1 PONTIANAK', '10816420', 'Jl. H. Haruna Kel. Sungai Jawi Dalam Kec. Pontianak Barat Kota Pontianak Kalimantan Barat', '1751173516_newlogo.png', 'MAN 1 Pontianak berdiri pada tahun 1978. Sebelumnya Nama MAN 1 Pontianak adalah SP. IAIN (Sekolah Persiapan IAIN) yang beralamat di Jl. Merdeka Barat no.173. SP IAIN diresmikan menjadi sekolah negeri pada tahun 1965 yang merupakan sekolah turunan dari IAIN Sunan Kalijaga Jogjakarta. Seiring berkembangnya SP IAIN di Indonesia, maka SP. IAIN Pontianak berinduk kepada IAIN Syarif Hidayatullah Pontianak.\r\n\r\nSesuai SK MENAG No. 17 tanggal 16 Maret 1978, terjadi perubahan nama dari SP. IAIN Syarif Hidayatullah menjadi Madrasah Aliyah Negeri 1 Pontianak yang beralamat di Jl. H. Haruna (sebelumya Jl. Apel VIPada tahun 2021, MAN 1 Pontianak mendapatkan bantuan dana hibah dari Kementrian PUPR untuk peremajaan/renovasi bangunan MAN 1 Pontianak yang sudah mulai rusak. Kini MAN 1 Pontianak menjadi salah satu sekolah favorit di Kota Pontianak.', 'A', '131161710001', 'Negeri', 'Madrasah Aliyah');
 
 -- --------------------------------------------------------
 
@@ -71,6 +91,12 @@ INSERT INTO `users` (`id`, `username`, `password`) VALUES
 --
 
 --
+-- Indexes for table `kepala_sekolah`
+--
+ALTER TABLE `kepala_sekolah`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `school_profile`
 --
 ALTER TABLE `school_profile`
@@ -86,6 +112,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `kepala_sekolah`
+--
+ALTER TABLE `kepala_sekolah`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `school_profile`
