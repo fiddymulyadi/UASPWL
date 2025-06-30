@@ -193,25 +193,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- HEADER DESKTOP -->
    <!-- PAGE CONTAINER-->
         <div class="page-container">
-            <!-- HEADER DESKTOP-->
-            <header class="header-desktop">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        <div class="header-wrap">
-                            <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                                <button class="au-btn--submit" type="submit">
-                                    <i class="zmdi zmdi-search"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <!-- END HEADER DESKTOP -->
 
             <!-- MAIN CONTENT-->
-            <div class="main-content">
+            <div class="main-content p-t-50">
                 <div class="section__content section__content--p30">
                       <div class="login-wrap p-4" style="max-width: 1000px; margin: auto; background: #fff; border-radius: 6px;">
                     <div class="container-fluid">
