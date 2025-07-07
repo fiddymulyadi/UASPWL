@@ -1,0 +1,497 @@
+/* Reset dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  line-height: 1.5;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px 150px; /* tambah padding kiri dan kanan agar lebih menjorok ke dalam */
+  color: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  padding-left: 20px; /* beri padding kiri tambahan agar logo bergeser ke dalam */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding-right: 20px; /* beri padding kanan agar menu juga bergeser ke dalam */
+}
+
+.nav-links li a {
+  color: #0a4c40;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #3498db;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%; /* Atur sesuai kebutuhan */
+  height: 750px;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background-size: cover; /* bisa diubah ke 'contain' bila ingin tidak terpotong */
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  left: 0;
+  z-index: 1;
+}
+
+.slider.active {
+  left: 0;
+  opacity: 1;
+  position: relative;
+}
+
+.slider-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 15px;
+  border-radius: 5px;
+  max-width: 90%;
+  font-family: Arial, sans-serif;
+}
+
+.slider-text h2 {
+  margin: 0 0 5px 0;
+  font-size: 24px;
+}
+
+.slider-text p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.content {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+h2 {
+  margin-bottom: 1rem;
+  color: #004d40;
+  font-weight: 700;
+}
+.stats {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.stat-item {
+  background: #00796b;
+  color: white;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  flex: 1 1 150px;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 700;
+}
+.stat-item i {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Section utama */
+.message-principal {
+  width: 100%;
+  background-color: #fff;
+  padding: 40px 15px;
+  box-sizing: border-box;
+}
+
+/* Judul section */
+.section-title {
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  font-size: 2.2em;
+  font-weight: bold;
+  text-align: center;
+  color: #2c3e50;
+}
+
+/* Container grid */
+.principal-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Foto */
+.principal-photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.principal-photo img {
+  max-width: 300px;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ddd;
+}
+
+.no-photo {
+  width: 300px;
+  height: 300px;
+  border: 2px dashed #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+  font-style: italic;
+  border-radius: 10px;
+}
+
+/* Nama kepala */
+.principal-name {
+  margin-top: 15px;
+  font-weight: 700;
+  font-size: 1.25em;
+  color: #34495e;
+}
+
+/* Teks sambutan */
+.principal-text {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #555;
+}
+
+.principal-text p {
+  margin-bottom: 1.2em;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .principal-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .principal-photo img,
+  .no-photo {
+    max-width: 100%;
+    max-height: 250px;
+  }
+  .principal-name {
+    font-size: 1.1em;
+  }
+  .section-title {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+  }
+}
+
+.container-berita {
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.1);
+}
+h1 {
+  color: #222;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+section.news-list {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20%;
+  gap: 24px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+article.news-item {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.12), 0 8px 20px rgb(0 0 0 / 0.08);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+article.news-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgb(0 0 0 / 0.2), 0 16px 40px rgb(0 0 0 / 0.18);
+}
+.news-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  transition: filter 0.3s ease;
+}
+article.news-item:hover .news-image {
+  filter: brightness(0.85);
+}
+.news-content {
+  padding: 20px 18px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.news-title {
+  font-size: 1.15rem;
+  color: #1a73e8;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+article.news-item:hover .news-title {
+  color: #155ab6;
+}
+.news-snippet {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+.news-date {
+  font-size: 0.8rem;
+  color: #999;
+  text-align: right;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+.btn-see-all {
+  display: block;
+  width: 220px;
+  margin: 0 auto;
+  padding: 14px 0;
+  background: linear-gradient(135deg, #4a90e2, #357ab7);
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 40px;
+  box-shadow: 0 6px 12px rgb(53 122 183 / 0.6);
+  transition: background 0.3s ease;
+  letter-spacing: 1px;
+}
+.btn-see-all:hover {
+  background: linear-gradient(135deg, #357ab7, #2a5d90);
+}
+
+/* Responsive Layout */
+@media (max-width: 1024px) {
+  section.news-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  section.news-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  section.news-list {
+    grid-template-columns: 1fr;
+  }
+  .container {
+    padding: 20px 15px;
+  }
+}
+/* Informasi Madrasah */
+.info-madrasah .info-container {
+  display: flex;
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 0 auto 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.info-box {
+  border: 2px solid #00796b;
+  border-radius: 6px;
+  padding: 1rem;
+  background: white;
+  flex: 1 1 350px;
+  color: #004d40;
+  text-align: left;
+}
+.info-box h3 {
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  background: #00796b;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+}
+.info-box ul {
+  list-style: none;
+}
+.info-box ul li {
+  margin-bottom: 0.6rem;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #004d40;
+}
+.info-box ul li i {
+  color: #00796b;
+}
+
+/* Footer */
+footer {
+  background: #004d40;
+  color: white;
+  padding: 2rem 1rem 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #00695c;
+}
+.footer-logo {
+  width: auto;
+  height: 50px;
+  margin-bottom: 0.5rem;
+}
+.footer-title {
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.footer-subtitle {
+  font-style: italic;
+  font-size: 0.85rem;
+  margin-bottom: 0.7rem;
+}
+.social-icons a {
+  color: white;
+  margin-right: 10px;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+.social-icons a:hover {
+  color: #81c784;
+}
+.footer-container h3 {
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+  text-align: left;
+}
+.footer-container ul {
+  list-style: none;
+  padding-left: 0;
+  text-align: left;
+}
+.footer-container ul li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.footer-container ul li i {
+  color: #81c784;
+}
+.footer-container ul li a {
+  color: white;
+  text-decoration: none;
+}
+.footer-container ul li a:hover {
+  text-decoration: underline;
+}
+.footer-bottom {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #81c784;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .nav-menu {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .principal-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .principal-text {
+    flex: unset;
+  }
+  .principal-video {
+    flex: unset;
+    width: 100%;
+  }
+  .stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .info-madrasah .info-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .latest-news .news-container {
+    flex-direction: column;
+  }
+  .news-item {
+    width: 100%;
+  }
+}

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/03cd1847fa.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <title>Kontak</title>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar fixed-top navbar-expand-lg bg-white fshadow">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="MAN 1 Pontianak">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto fw-semibold link-danger">
+                    <li class="nav-item ps-3">
+                        <a class="nav-link text-greenma" href="index.html">Beranda</a>
+                    </li>
+                    <li class="nav-item ps-3">
+                        <a class="nav-link text-greenma" href="profil.html">Profil</a>
+                    </li>
+                    <li class="nav-item ps-3">
+                        <a class="nav-link text-greenma" href="galeri.html">Galeri</a>
+                    </li>
+                    <li class="nav-item ps-3">
+                        <a class="nav-link text-greenma" href="kontak.html">Kontak</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- AKHIR NAVBAR -->
+
+    <!-- AWAL PAGE HEADER -->
+    <div class="page-header bg-greenma mb-5">
+        <div class="container px-0">
+            <div class="d-sm-flex align-items-center justify-content-between">
+                <div class="ps-5">
+                    <nav aria-label="breadcrumb">
+                        <h5 class="text-white web-page">Kontak</h5>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a class="text-light" href="index.html">Beranda</a></li>
+                            <li class="breadcrumb-item active text-light" aria-current="page">Kontak</li>
+                        </ol>
+                    </nav>
+                </div>
+                <img src="img/pageheaderkontak.png" class="img-fluid d-none w-50 d-sm-block" alt="header kontak">
+            </div>
+        </div>
+    </div>
+
+    <!-- AKHIR HEADER -->
+
+    <div class="fdivider"></div>
+
+    <!-- AWAL KONTAK -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 py-3 border border-greenma rounded">
+                <form action="kirim-pesan.php" method="post">
+                    <h5 class="card-title fw-bold">Ada yang bisa kami bantu?</h5>
+                    <p>Jika ada pertanyaan seputar Madrasah dan lainnya, silahkan ajukan pertanyaan anda dengan mengisi
+                        form berikut :</p>
+                    <div class="row g-3">
+                        <div class="col-sm-6 pb-2">
+                            <label id="firstName" class="form-label">Nama Lengkap</label>
+                            <input type="text" class="form-control border-greenma" id="fullName"
+                                placeholder="Nama Lengkap" value="" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <label id="contact" class="form-label">No. Telepon</label>
+                            <input type="tel" class="form-control border-greenma" id="phoneNumber"
+                                placeholder="No. Telepon" value="" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Pesan</label>
+                        <textarea class="form-control border-greenma" id="message" rows="5"
+                            placeholder="Tulis pesan anda disini"></textarea>
+                    </div>
+                    <button type="submit" class="btn bg-greenma text-light">Kirim Pesan</button>
+                </form>
+            </div>
+            <div class="col-md-4 ">
+                <div class="card border border-greenma rounded bg-greenma">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-light">Hubungi Kami</h5>
+                        <div class="card-body text-light">
+                            <p><i class="fa-sharp fa-solid fa-location-dot fa-sm"></i><a
+                                    class="text-reset text-decoration-none"
+                                    href="https://maps.app.goo.gl/TEfXbunmUHYKUMHt9"> Jl. H. Haruna, Pontianak
+                                    Kalbar</a></p>
+                            <p><i class="fa-sharp fa-solid fa-phone fa-sm"></i><a
+                                    class="text-reset text-decoration-none" href="tel:+05618129737"> 0561 8129 737</a>
+                            </p>
+                            <p><i class="fa-sharp fa-solid fa-envelope fa-sm"></i><a
+                                    class="text-reset text-decoration-none" href="mailto:info@man1pontianak.sch.id">
+                                    info@man1pontianak.sch.id</a></p>
+                            <p><i class="fa-sharp fa-solid fa-clock fa-sm"></i> Senin s/d Jum'at : 07.00 - 16.00</p>
+                            <p class="mb-2"><i class="fa-sharp fa-solid fa-people-arrows"></i> Follow jejaring sosial
+                                kami :</p>
+                            <div class="icon mb-0 ms-3">
+                                <a class="btn bg-transparent link-light p-0 px-2"
+                                    href="https://www.youtube.com/@iMANOneChannel" role="button">
+                                    <i class="fa-brands fa-youtube fa-xl"></i>
+                                </a>
+                                <a class="btn bg-transparent link-light p-0 px-2"
+                                    href="https://www.instagram.com/man1pnk_official/" role="button">
+                                    <i class="fa-brands fa-instagram fa-xl"></i>
+                                </a>
+                                <a class="btn bg-transparent link-light p-0 px-2"
+                                    href="https://www.facebook.com/groups/1457230421174023" role="button">
+                                    <i class="fa-brands fa-square-facebook fa-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AKHIR KONTAK -->
+
+    <div class="fdivider"></div>
+
+    <!-- AWAL LEGENDA -->
+
+    <div class="container">
+        <h1 class="text-center pb-0 pt-5">Legenda</h1>
+        <div class="col map-responsive rounded border bg-greenma">
+            <iframe class="p-3 rounded"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.8181859064102!2d109.31742367447637!3d-0.014873735556979266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e1d5892fac31993%3A0xaf275e877e9c06a9!2sMAN%201%20PONTIANAK!5e0!3m2!1sid!2sid!4v1703296582033!5m2!1sid!2sid"
+                width="600" height="300" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- AKHIR LEGENDA -->
+
+    <div class="fdivider"></div>
+
+     <!-- AWAL FOOTER -->
+     <footer class="text-center bg-greenma text-light">
+        <div class="container text-center text-md-start mt-5">
+            <div class="row mt-3">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto my-4">
+                    <a class="navbar-brand" href="https://man1pontianak.com">
+                        <img class="mt-4 mb-2" src="img/logo-text-white.png" alt="MAN 1 Pontianak">
+                    </a>
+                    <p class="fst-italic mb-2">Madrasah Hebat, Madrasah Bermartabat</p>
+                    <div class="social mb-4">
+                        <a class="btn bg-transparent link-light p-0 px-2" href="https://www.youtube.com/@iMANOneChannel"
+                            role="button">
+                            <i class="fa-brands fa-youtube fa-xl"></i>
+                        </a>
+                        <a class="btn bg-transparent link-light p-0 px-2"
+                            href="https://www.instagram.com/man1pnk_official/" role="button">
+                            <i class="fa-brands fa-instagram fa-xl"></i>
+                        </a>
+                        <a class="btn bg-transparent link-light p-0 px-2"
+                            href="https://www.facebook.com/groups/1457230421174023" role="button">
+                            <i class="fa-brands fa-square-facebook fa-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto my-4 tes">
+                    <h6 class="text-uppercase fw-bold my-4">Tautan Eksternal</h6>
+                    <p>
+                        <a href="https://kemenag.go.id/" class="text-reset">Kemenag RI</a>
+                    </p>
+                    <p>
+                        <a href="https://simpatika.kemenag.go.id/madrasah" class="text-reset">Simpatika</a>
+                    </p>
+                    <p>
+                        <a href="https://emis.kemenag.go.id/" class="text-reset">EMIS Madrasah</a>
+                    </p>
+                    <p>
+                        <a href="https://pipmadrasah.kemenag.go.id/" class="text-reset">PIP Kemenag</a>
+                    </p>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto my-4">
+                    <h6 class="text-uppercase fw-bold my-4">Tautan Internal</h6>
+                    <p><a href="https://elearning.man1pontianak.sch.id" class="text-reset">E-Learning</a></p>
+                    <p><a href="https://ppdb.man1pontianak.sch.id" class="text-reset">PPDB Online</a></p>
+                    <p><a href="https://rdm.man1pontianak.sch.id" class="text-reset">Raport Digital</a></p>
+                    <p><a href="https://elearning.man1pontianak.sch.id" class="text-reset"></a></p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 my-4">
+                    <h6 class="text-uppercase fw-bold my-4">Hubungi Kami</h6>
+                    <p><i class="fa-sharp fa-solid fa-location-dot fa-sm"></i><a class="text-reset text-decoration-none"
+                            href="https://maps.app.goo.gl/TEfXbunmUHYKUMHt9"> Jl. H. Haruna, Pontianak Kalbar</a>
+                    </p>
+                    <p><i class="fa-sharp fa-solid fa-phone fa-sm"></i><a class="text-reset text-decoration-none"
+                            href="tel:+05618129737"> 0561 8129 737</a></p>
+                    <p><i class="fa-sharp fa-solid fa-envelope fa-sm"></i><a class="text-reset text-decoration-none"
+                            href="mailto:info@man1pontianak.sch.id"> info@man1pontianak.sch.id</a></p>
+                    <p><i class="fa-sharp fa-solid fa-clock fa-sm"></i> Senin s/d Jum'at : 07.00 - 16.00</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2023 Copyright
+            <a class="text-reset text-decoration-none" href="https://man1pontianak.com/">MANSA</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="js/photogaleri.js"></script>
+    <script src="js/videogaleri.js"></script>
+    <script src="js/audio.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,658 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Noto Sans", Geneva, Verdana, sans-serif;
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #2c3e50;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+/* Logo icon div */
+.sidebar .logo {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #34495e;
+}
+
+.sidebar .logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Nav menu div */
+nav {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 15px 0;
+}
+
+nav a {
+  color: white !important; /* Pastikan warna font putih */
+  text-decoration: none !important; /* Hilangkan underline atau decoration lain */
+}
+
+nav a:visited,
+nav a:focus,
+nav a:active,
+nav a:hover {
+  color: white !important; /* Jaga warna tetap putih di semua kondisi */
+  text-decoration: none !important; /* Jaga tidak ada underline/decoration */
+}
+.menu-item {
+  padding: 12px 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #bdc3c7;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  user-select: none;
+}
+
+.menu-item i.icon-left {
+  margin-right: 15px;
+  min-width: 20px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.menu-item:hover,
+.menu-item.active {
+  background-color: #34495e;
+  color: white;
+}
+
+.submenu {
+  background-color: #34495e;
+  font-weight: 400;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+}
+
+.submenu a {
+  padding: 10px 45px;
+  display: block;
+  color: #bdc3c7;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.submenu a:hover,
+.submenu a.active {
+  background-color: #3d566e;
+  color: white;
+}
+
+/* Show submenu when parent has 'active' class */
+.menu-item.active + .submenu {
+  display: flex;
+  max-height: 500px;
+  /* cukup besar untuk menampilkan konten */
+}
+
+/* Logout div - now centered at bottom */
+.sidebar .logout {
+  padding: 20px 15px;
+  border-top: 1px solid #34495e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logout-button i {
+  font-size: 40px;
+  /* lebih besar */
+}
+
+.logout-button:hover {
+  background-color: transparent;
+  color: #ff0000;
+}
+
+img.logo-preview {
+  max-width: 150px;
+  display: block;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 3px;
+  background: white;
+}
+
+button {
+  margin-right: 10px;
+  padding: 8px 14px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1px solid transparent;
+}
+
+button#editBtn {
+  background-color: #0f3460;
+  color: white;
+}
+
+button#btn-edit {
+  background-color: #0f3460;
+  color: white;
+}
+
+button#editBtn:hover {
+  background-color: #0c2d54;
+}
+
+button#saveBtn {
+  background-color: #1abc9c;
+  color: white;
+}
+
+button#saveBtn:disabled {
+  background-color: #95d6c3;
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .sidebar {
+    width: 60px;
+  }
+
+  .sidebar .logo img {
+    display: none;
+  }
+
+  .menu-item span,
+  .submenu a {
+    display: none;
+  }
+
+  .logout-button span {
+    display: none;
+  }
+}
+
+.content {
+  flex: 1;
+  padding-bottom: 0px;
+  padding: 20px 30px 30px 30px;
+  background-color: #ecf0f1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.content-header {
+}
+
+.content-header h1 {
+  margin: 0;
+  color: #34495e;
+  font-weight: 500;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.cards-grid {
+  display: grid;
+  padding-top: 20px;
+  grid-template-columns: auto auto auto auto auto;
+  gap: 20px;
+}
+
+.card {
+  background: linear-gradient(135deg, #ffffff 0%, #e6f0fa 100%);
+  border-radius: 12px;
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.card .icon {
+  width: 40px;
+  /* ukuran lingkaran tetap */
+  height: 40px;
+  /* ukuran lingkaran tetap */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  /* ukuran icon tetap */
+  margin-right: 10px;
+  background-color: #2980b9;
+  border-radius: 50%;
+  color: white;
+  box-shadow: 0 3px 8px rgba(41, 128, 185, 0.6);
+}
+
+.card .text {
+  display: flex;
+  flex-direction: column;
+}
+
+.card .text .title {
+  font-weight: 700;
+  margin-bottom: 0px;
+  font-size: 1em;
+  color: #2980b9;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.07);
+}
+
+.card .text .description {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #000;
+  line-height: 1.3;
+}
+
+.school-form {
+  background: white;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 1000px;
+  margin-top: 20px;
+}
+
+.school-formcr {
+  background: white;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 1200px;
+  margin-top: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full {
+  grid-column: span 3;
+}
+
+.form-group.full2 {
+  grid-column: span 1;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #2c3e50;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  transition: border 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.btn-submit {
+  margin-top: 20px;
+  padding: 12px 12px;
+  background-color: #3498db;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #2980b9;
+}
+
+.alert {
+  padding: 10px;
+  background-color: green;
+  opacity: 0.5;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.alert-info {
+  color: #fff;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: opacity 0.6s;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* CRUD */
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+thead tr {
+  background-color: #2c3e50;
+  color: white;
+  text-align: left;
+}
+thead th {
+  padding: 12px 15px;
+}
+tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+tbody tr:last-child {
+  border-bottom: none;
+}
+tbody td {
+  padding: 12px 15px;
+  vertical-align: middle;
+}
+/* Border radius on top and bottom of the table */
+thead tr th:first-child {
+  border-top-left-radius: 12px;
+}
+thead tr th:last-child {
+  border-top-right-radius: 12px;
+}
+tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+/* Width adjustment per column */
+th:nth-child(1),
+td:nth-child(1) {
+  width: 5%;
+  text-align: center;
+}
+th:nth-child(2),
+td:nth-child(2) {
+  width: 20%;
+}
+th:nth-child(3),
+td:nth-child(3) {
+  width: 25%;
+}
+th:nth-child(4),
+td:nth-child(4) {
+  width: 30%;
+  text-align: center;
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+  width: 20%;
+  text-align: center;
+}
+/* Button styles */
+.action-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #00573f;
+  font-size: 18px;
+  padding: 6px 10px;
+  margin: 0 5px;
+  transition: color 0.3s, background-color 0.3s;
+  border-radius: 6px;
+}
+.action-btn:hover {
+  color: white;
+  background-color: #00573f;
+}
+/* Add new button */
+.add-btn {
+  display: inline-block;
+  background-color: #3498db;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 8px 20px;
+  margin-bottom: 15px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+.add-btn:hover {
+  background-color: #3498db;
+}
+
+.edit-btn {
+  background-color: transparent;
+  font-size: 20px;
+  color: black;
+  margin: 0 0 0 0;
+}
+
+.edit-btn i {
+  font-size: 18px;
+}
+
+.del-btn {
+  background-color: transparent;
+  color: black;
+}
+
+.del-btn i {
+  font-size: 18px;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+  padding-top: 60px;
+}
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px 30px;
+  border-radius: 8px;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+.modal-content h2 {
+  margin-top: 0;
+  color: #065f46;
+}
+.close {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close:hover {
+  color: #000;
+}
+form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #065f46;
+}
+form input[type="text"],
+form textarea,
+form input[type="file"] {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+form button {
+  width: 100%;
+  padding: 10px 0;
+
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+form button:hover {
+  background-color: #0f766e;
+}
+
+img {
+  width: 120px;
+  height: 70px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+/* dst sesuai kebutuhan */
+
+/* Styling Tabel Berita - kolom disesuaikan */
+.table-berita th:nth-child(1),
+.table-berita td:nth-child(1) {
+  width: 5%;
+  text-align: center;
+}
+.table-berita th:nth-child(2),
+.table-berita td:nth-child(2) {
+  width: 20%;
+}
+.table-berita th:nth-child(3),
+.table-berita td:nth-child(3) {
+  width: 30%;
+}
+.table-berita th:nth-child(4),
+.table-berita td:nth-child(4) {
+  width: 15%;
+  text-align: center;
+}
+.table-berita th:nth-child(5),
+.table-berita td:nth-child(5) {
+  width: 10%;
+  text-align: center;
+}
+.table-berita th:nth-child(6),
+.table-berita td:nth-child(6) {
+  width: 10%;
+  text-align: center;
+}
+.table-berita th:nth-child(7),
+.table-berita td:nth-child(7) {
+  width: 9%;
+  text-align: center;
+}
+
+/* Styling Tabel Berita - kolom disesuaikan */
+.table-pengumuman th:nth-child(1),
+.table-pengumuman td:nth-child(1) {
+  width: 5%;
+  text-align: center;
+}
+.table-pengumuman th:nth-child(2),
+.table-pengumuman td:nth-child(2) {
+  width: 20%;
+}
+.table-pengumuman th:nth-child(3),
+.table-pengumuman td:nth-child(3) {
+  width: 30%;
+}
+.table-pengumuman th:nth-child(4),
+.table-pengumuman td:nth-child(4) {
+  width: 10%;
+  text-align: center;
+}
+.table-pengumuman th:nth-child(5),
+.table-pengumuman td:nth-child(5) {
+  width: 10%;
+  text-align: center;
+}
+.table-pengumuman th:nth-child(6),
+.table-pengumuman td:nth-child(6) {
+  width: 10%;
+  text-align: center;
+}
